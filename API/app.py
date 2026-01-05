@@ -1,0 +1,33 @@
+from flask import Flask, request, jsonify
+import joblib
+import pandas as pd
+
+app = Flask(__name__)
+
+# Load pipeline
+with open("student_pipeline.pkl", "rb") as f:
+    pipeline = joblib.load(f)
+
+# print(pipeline.feature_names_in_)
+@app.route("/")
+def home():
+    return "Student Performance Prediction API"
+
+@app.route("/predict", methods=["POST"])
+def predict():
+    try:
+        data = request.get_json()
+
+        input_df = pd.DataFrame([data])
+
+        prediction = pipeline.predict(input_df)
+
+        return jsonify({
+            "predicted_score": round(float(prediction[0]),2)
+        })
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
+if __name__ == "__main__":
+    app.run(debug=True)
