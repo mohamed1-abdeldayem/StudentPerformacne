@@ -7,8 +7,7 @@ app = Flask(__name__)
 # Load pipeline
 with open("student_pipeline.pkl", "rb") as f:
     pipeline = joblib.load(f)
-
-# print(pipeline.feature_names_in_)
+  # print(pipeline.feature_names_in_)
 @app.route("/")
 def home():
     return "Student Performance Prediction API"

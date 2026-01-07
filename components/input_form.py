@@ -15,7 +15,7 @@ def render_input_form():
     """, unsafe_allow_html=True)
     
     with st.container():
-        
+       
         col1, col2 = st.columns(2)
         with col1:
             hours_studied = st.number_input(
@@ -65,18 +65,19 @@ def render_input_form():
         with col5:
             index_value = 0  # default
             if edit_mode:
-               if saved_inputs.get("Extracurricular_Activities", "No") == "No":
+               if saved_inputs.get("Peer_Influence", "Positive") == "Neutral":
                   index_value = 1
+               elif saved_inputs.get("Peer_Influence", "Positive") == "Negative":
+                  index_value = 2
                else:
                  index_value = 0
-            extracurricular_activities = st.radio(
-                "Participation in extracurricular activities",
-                ["Yes", "No"],
-                horizontal=True,
-                index=index_value,
-                key="extracurricular"
+            peer_influence = st.selectbox(
+                "Type of peer influence",
+                ["Positive", "Neutral", "Negative"],
+                index=index_value,  
+                key="peer_influence"
             )
-        
+            
         with col6:
             index_value = 0  
             if edit_mode:
@@ -126,8 +127,8 @@ def render_input_form():
                 index=index_value,  
                 key="access_to_resources"
             )
-        
-        
+
+
         col9, col10 = st.columns(2)
         with col9:
             index_value = 1  # default
@@ -144,105 +145,24 @@ def render_input_form():
                 index=index_value,  
                 key="family_income"
             )
-        
         with col10:
-            index_value = 2  # default
-            if edit_mode:
-               if saved_inputs.get("Teacher_Quality", "High") == "Low":
-                  index_value = 0
-               elif saved_inputs.get("Teacher_Quality", "High") == "Medium":
-                  index_value = 1
-               else:
-                 index_value = 2
-            teacher_quality = st.selectbox(
-                "Quality of teaching received",
-                ["Low", "Medium", "High"],
-                index=index_value,  
-                key="teacher_quality"
-            )
+            st.empty()      
+        
+      
+            
         
         
-        col11, col12 = st.columns(2)
-        with col11:
-            index_value = 0  # default
-            if edit_mode:
-               if saved_inputs.get("Peer_Influence", "Positive") == "Neutral":
-                  index_value = 1
-               elif saved_inputs.get("Peer_Influence", "Positive") == "Negative":
-                  index_value = 2
-               else:
-                 index_value = 0
-            peer_influence = st.selectbox(
-                "Type of peer influence",
-                ["Positive", "Neutral", "Negative"],
-                index=index_value,  
-                key="peer_influence"
-            )
-        
-        with col12:
-            index_value = 1  # default
-            if edit_mode:
-               if saved_inputs.get("Parental_Education_Level", "College") == "High School":
-                  index_value = 0
-               elif saved_inputs.get("Parental_Education_Level", "College") == "Postgraduate":
-                  index_value = 2
-               else:
-                 index_value = 1
-            parental_education_level = st.selectbox(
-                "Education level of parents",
-                ["High School", "College", "Postgraduate"],
-                index=index_value,  
-                key="parental_education"
-            )
         
         
-        col13, col14 = st.columns(2)
-        with col13:
-            index_value = 2  # default
-            if edit_mode:
-               if saved_inputs.get("Distance_from_Home", "Far") == "Near":
-                  index_value = 0
-               elif saved_inputs.get("Distance_from_Home", "Far") == "Moderate":
-                  index_value = 1
-               else:
-                 index_value = 2
-            distance_from_home = st.selectbox(
-                "Distance from home to school",
-                ["Near", "Moderate", "Far"],
-                index=index_value,  # Default to "Far"
-                key="distance_from_home"
-            )
+      
+            
         
-        with col14:
-            index_value = 0  # default
-            if edit_mode:
-               if saved_inputs.get("Internet_Access", "Yes") == "No":
-                  index_value = 1
-               else:
-                 index_value = 0
-                 
-            internet_access = st.radio(
-                "Internet Access at Home",
-                ["Yes", "No"],
-                horizontal=True,
-                index=index_value,  
-                key="internet_access"
-            )
         
-        index_value2=2  # default
-        if edit_mode:
-              if saved_inputs.get("Motivation_Level", "High") == "Low":
-                  index_value2 = 0
-              elif saved_inputs.get("Motivation_Level", "High") == "Medium":
-                  index_value2 = 1
-              else:
-                 index_value2 = 2
-        motivation_level = st.selectbox(
-            "Student Motivation Level",
-            ["Low", "Medium", "High"],
-            index=index_value2,  
-            key="motivation_level"
-        )
+      
+       
+            
+        
+        
     
     st.markdown("</div></div>", unsafe_allow_html=True)
     
@@ -252,15 +172,10 @@ def render_input_form():
         "Attendance": int(attendance),
         "Parental_Involvement": parental_involvement,
         "Access_to_Resources": access_to_resources,
-        "Extracurricular_Activities": extracurricular_activities,
         "Previous_Scores": int(previous_scores),
-        "Motivation_Level": motivation_level,
-        "Internet_Access": internet_access,
         "Tutoring_Sessions": int(tutoring_sessions),
         "Family_Income": family_income,
-        "Teacher_Quality": teacher_quality,
         "Peer_Influence": peer_influence,
         "Learning_Disabilities": learning_disabilities,
-        "Parental_Education_Level": parental_education_level,
-        "Distance_from_Home": distance_from_home
+        
     }
