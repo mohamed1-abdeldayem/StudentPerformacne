@@ -1,4 +1,129 @@
 
+body {
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-card {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.recommendation-card {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.recommendation-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-blue {
+    background-color: rgba(33, 150, 243, 0.1);
+    color: #2196F3;
+}
+
+.icon-yellow {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #FFC107;
+}
+
+.icon-green {
+    background-color: rgba(76, 175, 80, 0.15);
+    color: #4CAF50;
+}
+
+.icon-red {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #F44336;
+}
+
+.progress-circle {
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+
+.progress-circle svg {
+    transform: rotate(-90deg);
+}
+
+.progress-circle .circle-bg {
+    fill: none;
+    stroke: #e9ecef;
+    stroke-width: 10;
+}
+
+.progress-circle .circle-progress {
+    fill: none;
+    stroke: #2196F3;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.7s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-text .percentage {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2196F3;
+}
+
+.progress-text .label {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.grade-title {
+    color: #2196F3;
+    font-weight: 700;
+}
+
+.grade-value {
+    color: #212529;
+}
+
+.btn-primary {
+    background-color: #2196F3;
+    border-color: #2196F3;
+}
+
+.btn-primary:hover {
+    background-color: #1976D2;
+    border-color: #1976D2;
+}
+
+.btn-outline-primary {
+    color: #2196F3;
+    border-color: #2196F3;
+}
+
+.btn-outline-primary:hover {
+    background-color: #2196F3;
+    border-color: #2196F3;
+}
+
 div.stButton>button {
     background-color: rgb(13 110 253);
     
@@ -19,4 +144,12 @@ div.stButton>button:hover {
 
 div.stButton>button:active {
     background-color: #0f3d63;
+}
+
+.actions-placeholder {
+    height: 52px;
+}
+
+div[data-testid="column"] button {
+    margin-top: -70px;
 }

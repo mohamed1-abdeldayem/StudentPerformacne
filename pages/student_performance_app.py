@@ -1,9 +1,11 @@
-# app.py
 import streamlit as st
+import sys
+import os
 import requests
 from components.header import render_header
 from components.input_form import render_input_form
 from components.footer import render_footer
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 API_URL = "http://127.0.0.1:5000/predict"
 
@@ -21,8 +23,7 @@ def load_bootstrap():
 def load_css():
     with open("styles/custom.css") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-def main():
+def render_student_performance():
 
     load_bootstrap()
     load_css()
@@ -44,27 +45,14 @@ def main():
                     # st.info(f"Response data: {result}")
                     st.session_state["predicted_grade"] = result["predicted_score"]
                     st.session_state["inputs"] = inputs
+                    st.switch_page("pages/prediction_page_app.py")
                 else:
                     st.error("Prediction API failed")
 
             except requests.exceptions.RequestException:
                 st.error("Could not connect to Prediction API")
 
-    if "predicted_grade" in st.session_state:
-        st.markdown(f"""
-        <div class="card shadow border-0 mt-4 text-center">
-            <div class="card-header bg-primary text-white">
-                <h4>Predicted Grade</h4>
-            </div>
-            <div class="card-body">
-                <h1 class="display-3 text-primary">
-                    {st.session_state["predicted_grade"]}
-                </h1>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
     render_footer()
 
 if __name__ == "__main__":
-    main()
+    render_student_performance()
