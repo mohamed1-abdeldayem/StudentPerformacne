@@ -1,0 +1,74 @@
+div[data-testid="stForm"] {
+    width: 400px;
+    min-height: 480px;
+    margin: auto;
+    padding: 24px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* مسافات العناصر */
+div[data-testid="stForm"] > div {
+    gap: 27px;
+}
+
+.Logo{
+        width: 36px; 
+        height: 36px;
+        background: #258CF4FF; 
+        border-radius: 7px; 
+        display: flex;
+        justify-content: center; 
+        align-items: center;  
+    }
+    
+    .Logo svg{
+        width: 24px; 
+        height: 24px; 
+        fill: #FFFFFFFF;
+        background: #258CF4FF; 
+        border-color: #FFFFFFFF;
+    }
+    
+    .Logo svg path{
+        fill: #FFFFFFFF;
+    }
+
+
+.st-key-log_btn button{
+    background-color: #258CFF !important;
+    color: white !important;
+}
+.st-key-log_btn button {
+    transition: transform 0.2s ease;
+}
+
+.st-key-log_btn button:hover {
+    transform: scale(1.03);
+}
+.form-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+.form-subtitle {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom:5px;
+} 
+      .signup {
+    text-align: center;
+    margin-bottom:5px;
+    font-size: 15px;
+    color: #258cff;
+}
+.signup-link {
+    color: #258CF4 !important;
+    text-decoration: none !important;
+    font-weight: bold;
+    margin-left: 5px;
+}
+.signup-link:hover {
+    text-decoration: underline !important;
+}
