@@ -42,8 +42,8 @@ def render_grade_prediction_card(grade=90, show_buttons=True):
           </div>
         </div>
         <div class="col-12 col-md text-center text-md-start">
-          <h1 class="grade-title fs-2 fs-md-1 mb-2">
-            Predicted Grade: <span class="grade-value">{grade_letter}</span>
+          <h1 class="grade-title fs-2 fs-md-1 mb-2 text-primary">
+            Predicted Grade: <span class="grade-value text-primary">{grade_letter}</span>
           </h1>
           <p class="text-muted mb-4">
             This prediction is based on the information you provided and historical data patterns.
