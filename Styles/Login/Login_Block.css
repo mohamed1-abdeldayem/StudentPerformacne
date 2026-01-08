@@ -1,0 +1,139 @@
+
+div[data-testid="stForm"] {
+    width: 400px;
+    min-height: 480px;
+    margin: auto;
+    padding: 24px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    margin-top: 25%;
+}
+@media (max-width: 768px) {
+    div[data-testid="stForm"] {
+        width: 400px;
+        min-height: 480px;
+        margin: auto;
+        padding: 24px;
+        border-radius: 12px;
+        background: white;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        margin-top: 25%;
+        margin-left: -10px;
+    }
+}
+
+/* مسافات العناصر */
+div[data-testid="stForm"] > div {
+    gap: 27px;
+}
+
+
+
+.Logo{
+        width: 36px; 
+        height: 36px;
+        background: #258CF4FF; 
+        border-radius: 7px; 
+        display: flex;
+        justify-content: center; 
+        align-items: center;  
+    }
+    
+    .Logo svg{
+        width: 24px; 
+        height: 24px; 
+        fill: #FFFFFFFF;
+        background: #258CF4FF; 
+        border-color: #FFFFFFFF;
+    }
+    
+    .Logo svg path{
+        fill: #FFFFFFFF;
+    }
+/* الشكل الافتراضي لكل الأزرار */
+div[data-testid="stFormSubmitButton"] > button {
+    background-color: #e0e0e0;
+    color: black;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
+
+/* Student Active */
+.st-key-student_btn button {
+    background-color: #258CFF !important;
+    color: white !important;
+}
+
+/* Instructor Active */
+.st-key-inst_btn button {
+    background-color: #258CFF !important;
+    color: white !important;
+}
+.st-key-log_btn_login button{
+    background-color: #258CFF !important;
+    color: white !important;
+}
+div[data-testid="stButton"] > button,
+div[data-testid="stFormSubmitButton"] > button {
+    transition: transform 0.2s ease;
+}
+
+div[data-testid="stButton"] > button:hover,
+div[data-testid="stFormSubmitButton"] > button:hover {
+    transform: scale(1.03);
+   
+}
+
+.signup { 
+    text-align: center; 
+    margin-top: 15px;
+    margin-bottom:10px; 
+    font-size: 15px; 
+    } 
+    .signup-link { 
+    color: #4CAF50; 
+    text-decoration: none; 
+    font-weight: bold; 
+    margin-left: 5px; 
+    } 
+    .signup-link:hover {
+     text-decoration: underline; 
+    }
+        /* استهداف الزر وتفريغه من التنسيق */
+        div[data-testid="stFormSubmitButton"] > button {
+            background-color: transparent;
+            color: #258CF4;          /* لون الكلمة (أزرق مثل الروابط) */
+            border: none;
+            padding: 0;
+            height: auto;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        /* تأثير عند مرور الماوس */
+        div[data-testid="stFormSubmitButton"] > button:hover {
+            background-color: transparent;
+            color: #ff4b4b;          /* تغيير اللون عند التمرير */
+            border: none;
+    
+        }
+    
+        /* تأثير عند الضغط */
+        div[data-testid="stFormSubmitButton"] > button:active {
+            background-color: transparent;
+            color: #ff4b4b;
+            border: none;
+        }
+    
+        /* إلغاء تأثير الـ focus (الإطار الذي يظهر بعد الضغط) */
+        .st-key-Sign_Up {
+            display: flex;
+            justify-content: center; /* توسيط أفقي */
+            align-items: center;     /* توسيط عمودي */
+            height: 80vh;            /* ارتفاع الصفحة */
+            flex-direction: column;  /* ترتيب العناصر عمودي */
+        }
+    
+    
