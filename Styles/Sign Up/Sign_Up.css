@@ -36,15 +36,15 @@ div[data-testid="stForm"] > div {
     }
 
 
-.st-key-log_btn button{
+.st-key-log_btnsign button{
     background-color: #258CFF !important;
     color: white !important;
 }
-.st-key-log_btn button {
+.st-key-log_btnsign button {
     transition: transform 0.2s ease;
 }
 
-.st-key-log_btn button:hover {
+.st-key-log_btnsign button:hover {
     transform: scale(1.03);
 }
 .form-title {
@@ -72,3 +72,38 @@ div[data-testid="stForm"] > div {
 .signup-link:hover {
     text-decoration: underline !important;
 }
+    /* استهداف الزر وتفريغه من التنسيق */
+    div.stButton > button {
+        background-color: transparent;
+        color: #258CF4;          /* لون الكلمة (أزرق مثل الروابط) */
+        border: none;
+        padding: 0;
+        height: auto;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    /* تأثير عند مرور الماوس */
+    div.stButton > button:hover {
+        background-color: transparent;
+        color: #ff4b4b;          /* تغيير اللون عند التمرير */
+        border: none;
+
+    }
+
+    /* تأثير عند الضغط */
+    div.stButton > button:active {
+        background-color: transparent;
+        color: #ff4b4b;
+        border: none;
+    }
+
+    /* إلغاء تأثير الـ focus (الإطار الذي يظهر بعد الضغط) */
+    .st-key-Sign_In {
+        display: flex;
+        justify-content: center; /* توسيط أفقي */
+        align-items: center;     /* توسيط عمودي */
+        height: 80vh;            /* ارتفاع الصفحة */
+        flex-direction: column;  /* ترتيب العناصر عمودي */
+    }
+

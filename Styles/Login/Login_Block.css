@@ -71,7 +71,7 @@ div[data-testid="stFormSubmitButton"] > button {
     background-color: #258CFF !important;
     color: white !important;
 }
-.st-key-log_btn button{
+.st-key-log_btn_login button{
     background-color: #258CFF !important;
     color: white !important;
 }
@@ -101,3 +101,39 @@ div[data-testid="stFormSubmitButton"] > button:hover {
     .signup-link:hover {
      text-decoration: underline; 
     }
+        /* استهداف الزر وتفريغه من التنسيق */
+        div[data-testid="stFormSubmitButton"] > button {
+            background-color: transparent;
+            color: #258CF4;          /* لون الكلمة (أزرق مثل الروابط) */
+            border: none;
+            padding: 0;
+            height: auto;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        /* تأثير عند مرور الماوس */
+        div[data-testid="stFormSubmitButton"] > button:hover {
+            background-color: transparent;
+            color: #ff4b4b;          /* تغيير اللون عند التمرير */
+            border: none;
+    
+        }
+    
+        /* تأثير عند الضغط */
+        div[data-testid="stFormSubmitButton"] > button:active {
+            background-color: transparent;
+            color: #ff4b4b;
+            border: none;
+        }
+    
+        /* إلغاء تأثير الـ focus (الإطار الذي يظهر بعد الضغط) */
+        .st-key-Sign_Up {
+            display: flex;
+            justify-content: center; /* توسيط أفقي */
+            align-items: center;     /* توسيط عمودي */
+            height: 80vh;            /* ارتفاع الصفحة */
+            flex-direction: column;  /* ترتيب العناصر عمودي */
+        }
+    
+    
