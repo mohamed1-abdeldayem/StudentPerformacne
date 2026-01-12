@@ -49,15 +49,26 @@ def sign_up_page():
     def sign_up_user(full_name, email, password):
         """Sign up user and store in student_account table"""
         try:
-            # Check if email already exists
-            if check_email_exists(email):
-                return False, "This email is already registered."
+            auth_response = supabase.auth.sign_up({
+            "email": email,
+            "password": password
+            })
+
+            if auth_response.user:
+                user_id = auth_response.user.id
+                token = auth_response.session.access_token
             
+            # حفظ token و user_id في session_state
+            st.session_state.token = token
+            st.session_state.user_id = user_id
+
+
             # Hash the password
             hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
             
             # Insert new student account
             new_student = {
+                "stud_uuid": user_id,
                 "full_name": full_name.strip(),
                 "email": email.strip().lower(),
                 "password": hashed_password.decode('utf-8'),

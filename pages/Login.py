@@ -132,19 +132,29 @@ def login_page():
             else:
                 with st.spinner("Authenticating..."):
                     if st.session_state.role == "student":
-                        # Authenticate student from database with bcrypt
-                        result = authenticate_student(email, password)
-                        if result["success"]:
-                            st.session_state.logged_in = True
-                            st.session_state.user_data = result["data"]
-                            st.session_state.user_role = "student"
-                            st.success(f"Welcome {result['data']['full_name']}! 🎓")
-                            st.balloons()
-                            # Redirect to student dashboard
-                            # st.switch_page("pages/student_dashboard.py")
-                        else:
-                            st.error(f"❌ {result['message']}")
-                    
+                        try:
+                            auth_response = supabase.auth.sign_in_with_password({
+                            "email": email,
+                            "password": password
+                            })
+                            if auth_response.user:
+                                # Save token and user_id in session_state
+                                st.session_state.user_id = auth_response.user.id
+                                st.session_state.token = auth_response.session.access_token
+                                st.session_state.logged_in = True
+                                st.session_state.user_role = "student"
+
+                                # Fetch additional student data
+                                user_data = supabase.table("student_account").select("*").eq("stud_uuid", auth_response.user.id).execute()
+                                st.session_state.user_data = user_data.data[0] if user_data.data else None
+                                
+                                st.success(f"Welcome {st.session_state.user_data['full_name']}! 🎓")
+                                st.balloons()
+                                
+                            else:
+                                st.error("Invalid email or password")
+                        except Exception as e:
+                            st.error(f"Auth error: {str(e)}")                    
                     else:  # instructor
                         # Authenticate instructor from hardcoded credentials
                         result = authenticate_instructor(email, password)
