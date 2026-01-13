@@ -61,7 +61,7 @@ def sign_up_page():
             # حفظ token و user_id في session_state
             st.session_state.token = token
             st.session_state.user_id = user_id
-
+            st.session_state.role = "student"
 
             # Hash the password
             hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())

@@ -22,7 +22,8 @@ def render_prediction_page():
        st.stop() 
     grade=st.session_state.get("predicted_grade", 0)
     render_grade_prediction_card(grade=grade, show_buttons=True)
-    render_recommendations_card()
+    inputs = st.session_state.get("inputs", {})
+    render_recommendations_card(inputs)
     
     render_exact_footer_from_image()
 if __name__ == "__main__":

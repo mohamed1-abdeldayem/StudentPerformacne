@@ -15,7 +15,7 @@ def render_input_form():
     """, unsafe_allow_html=True)
     
     with st.container():
-       
+    
         col1, col2 = st.columns(2)
         with col1:
             hours_studied = st.number_input(
@@ -146,36 +146,127 @@ def render_input_form():
                 key="family_income"
             )
         with col10:
-            st.empty()      
+            index_value = 1  # default
+            if edit_mode:
+               if saved_inputs.get("Motivation_Level", "Medium") == "Low":
+                  index_value = 0
+               elif saved_inputs.get("Motivation_Level", "Medium") == "High":
+                  index_value = 2
+               else:
+                 index_value = 1
+            motivation_level = st.selectbox(
+                "Student's motivation level",
+                ["Low", "Medium", "High"],
+                index=index_value,  
+                key="Motivation_Level"
+            )
+            
+            
+            
+        col11, col12 = st.columns(2)
+        with col11:
+            index_value = 0  # default
+            if edit_mode:
+               if saved_inputs.get("Internet_Access", "Yes") == "Yes":
+                  index_value = 0
+               else:
+                 index_value = 1    
+            internet_access = st.radio(
+                "Internet access at home",
+                ["Yes", "No"],
+                horizontal=True,
+                index=index_value,
+                key="internet_access"
+            )
+        with col12:
+            index_value = 1  # default
+            if edit_mode:
+               if saved_inputs.get("Distance_From_Home", "Near") == "Near":
+                  index_value = 0
+               elif saved_inputs.get("Distance_From_Home", "Far") == "Far":
+                  index_value = 2
+               else:
+                 index_value = 1
+            distance_from_home = st.selectbox(
+                "Distance from home to school",
+                ["Near","Moderate", "Far"],
+                index=index_value,  
+                key="distance_from_home"
+            )
         
-      
+        
+        
+        
+        
+        col13, col14 = st.columns(2)
+        with col13:
+            index_value = 1  # default
+            if edit_mode:
+               if saved_inputs.get("Teacher_Quality", "Medium") == "Low":
+                  index_value = 0
+               elif saved_inputs.get("Teacher_Quality", "Medium") == "High":
+                  index_value = 2
+               else:
+                 index_value = 1
+            teacher_quality = st.selectbox(
+                "Quality of teaching received",
+                ["Low", "Medium", "High"],
+                index=index_value,  
+                key="teacher_quality"
+            )
+        with col14:
+            index_value = 0  # default
+            if edit_mode:
+               if saved_inputs.get("Extracurricular_Activities", "Yes") == "Yes":
+                  index_value = 0
+               else:
+                 index_value = 1    
+            extracurricular_activities = st.radio(
+                "Participation in extracurricular activities",
+                ["Yes", "No"],
+                horizontal=True,
+                index=index_value,
+                key="extracurricular_activities"
+            )    
             
         
         
         
         
-      
+        col15 = st.columns(1)
+        with col15[0]:
             
-        
-        
-      
-       
+            index_value = 1  # default
+            if edit_mode:
+               if saved_inputs.get("Parental_Education_Level", "High School") == "High School":
+                  index_value = 0
+               elif saved_inputs.get("Parental_Education_Level", "College") == "College":
+                  index_value = 1
+               else:
+                 index_value = 2
+            parental_education_level = st.selectbox(
+                "Parental education level",
+                ["High School", "College", "Postgraduate"],
+                index=index_value,  
+                key="parental_education_level"
+            )
             
-        
-        
-    
     st.markdown("</div></div>", unsafe_allow_html=True)
-    
-    
     return {
         "Hours_Studied": int(hours_studied),
         "Attendance": int(attendance),
         "Parental_Involvement": parental_involvement,
         "Access_to_Resources": access_to_resources,
+        "Extracurricular_Activities": extracurricular_activities,
         "Previous_Scores": int(previous_scores),
+        "Motivation_Level": motivation_level,
+        "Internet_Access": internet_access,
         "Tutoring_Sessions": int(tutoring_sessions),
         "Family_Income": family_income,
+        "Teacher_Quality": teacher_quality,
         "Peer_Influence": peer_influence,
         "Learning_Disabilities": learning_disabilities,
+        "Parental_Education_Level": parental_education_level,
+        "Distance_from_Home": distance_from_home,
         
     }
