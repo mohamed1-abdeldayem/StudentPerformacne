@@ -102,7 +102,7 @@ def sign_up_page():
     with st.container(key="Sign_In"):
         if st.button("Sign In"):
             st.session_state.page = "Login"
-            st.rerun() 
+            st.switch_page("pages/Login.py") 
 
 
     # ================= Form =================
@@ -140,10 +140,11 @@ def sign_up_page():
                     if success:
                         st.success(message)
                         st.balloons()
-                        # st.switch_page("Login.py")
+                        st.switch_page("pages/Login.py")
                         # st.info("You can now login with your credentials")
                     else:
                         st.error(message)
 
 
-
+if __name__ == "__main__":
+    sign_up_page()

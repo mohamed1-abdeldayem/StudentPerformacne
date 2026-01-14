@@ -1,0 +1,32 @@
+header[data-testid="stHeader"] {
+    height: 0px !important;
+}
+
+div.block-container {
+    padding-top: 1rem !important;
+}
+
+section[data-testid="stSidebar"] {
+    width: 325px !important;
+}
+
+div.stButton>button {
+    background-color: #258cff !important;
+    color: white !important;
+    border: 2px solid #258cff;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+div[data-testid="stMetric"] {
+    background: #258cff;
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+div[data-testid="stTabs"] {
+    background: #258cff;
+    padding: 6px;
+    border-radius: 14px;
+}

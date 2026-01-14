@@ -9,7 +9,7 @@ def main():
     )
     
     
-    st.switch_page("pages/student_performance_app.py")
+    st.switch_page("pages/Sign_Up.py")
 
 if __name__ == "__main__":
     main()

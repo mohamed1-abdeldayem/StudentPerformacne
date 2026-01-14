@@ -150,7 +150,7 @@ def login_page():
                                 
                                 st.success(f"Welcome {st.session_state.user_data['full_name']}! 🎓")
                                 st.balloons()
-                                
+                                st.switch_page("pages/student_performance_app.py")
                             else:
                                 st.error("Invalid email or password")
                         except Exception as e:
@@ -164,7 +164,9 @@ def login_page():
                             st.session_state.user_role = "instructor"
                             st.balloons()
                             # Redirect to instructor dashboard
-                            # st.switch_page("pages/instructor_dashboard.py")
+                            st.switch_page("pages/InstructorDashboard.py")
                         else:
                             st.error(f"❌ {result['message']}")
 
+if __name__ == "__main__":
+    login_page()
