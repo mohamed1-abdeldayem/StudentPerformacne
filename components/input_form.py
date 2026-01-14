@@ -25,6 +25,7 @@ def render_input_form():
                 value=saved_inputs.get("Hours_Studied", 0) if edit_mode else 0,
                 step=1,
                 key="hours_studied"
+                
             )
         
         with col2:

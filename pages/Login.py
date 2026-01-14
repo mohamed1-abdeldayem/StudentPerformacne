@@ -107,8 +107,7 @@ def login_page():
         load_html("Styles/Login/Login_Sign_Up_Button.html")
         with st.container(key="Sign_Up"):
             if st.form_submit_button("Sign Up"):
-                st.session_state.page = "Sign_Up"
-                st.rerun()
+                st.switch_page("pages/Sign_Up.py")
         # ================= Logic =================
         # Handle role selection
         if student_btn:
