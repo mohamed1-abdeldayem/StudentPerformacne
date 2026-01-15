@@ -114,7 +114,7 @@ def render_grade_distribution(df):
         fig = px.histogram(
             df, 
             x="Predicted Score",
-            nbins=20, 
+            nbins=10, 
             color_discrete_sequence=['#3498db'], 
             opacity=0.8, 
             labels={"Predicted Score": "Score Range"}
@@ -126,7 +126,7 @@ def render_grade_distribution(df):
             font_color="white",
             xaxis_title="Score (0-100)",
             yaxis_title="Number of Students",
-            bargap=0.1, 
+            bargap=0.1,  # Gap between bars
             xaxis=dict(range=[0, 105]) 
         )
 

@@ -10,12 +10,13 @@ from components.footer import render_footer
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 API_URL = "http://127.0.0.1:5000/predict"
-
+# page configuration
 st.set_page_config(
     page_title="Student Performance Predictor",
     layout="wide",
     page_icon="🎓"
 )
+# Initialize Supabase client
 @st.cache_resource
 def init_supabase() -> Client:
         """Initialize Supabase client"""
@@ -24,16 +25,17 @@ def init_supabase() -> Client:
         return create_client(url, key)
 
 supabase = init_supabase()
+# Authentication check
 if "user_id" not in st.session_state or "token" not in st.session_state:
     st.error("You must login first")
     st.switch_page("pages/Login.py")
     st.stop()
-
+# Role-based access control
 if st.session_state.role != "student":
     st.error("You are not authorized to access this page")
     st.switch_page("pages/Login.py")
     st.stop()    
-    
+# Load Bootstrap and Custom CSS 
 def load_bootstrap():
     with open("styles/bootstrap.html", "r") as f:
         bootstrap_html = f.read()
@@ -46,11 +48,13 @@ def render_student_performance():
 
     load_bootstrap()
     load_css()
+    # Render Header component
     render_header()
-
+     
+    # Render Input Form component and collect inputs
     inputs = render_input_form()
     student_id = st.session_state.user_id
-
+    # Prepare data for insertion into Supabase
     data_to_insert = {
     "stud_uuid": student_id,
     "hours_studied": inputs["Hours_Studied"],
@@ -76,13 +80,16 @@ def render_student_performance():
     with col_btn2:
         if st.button("Predict My Grade", use_container_width=True):
             try:
-                
+                # Make API call to get prediction
                 response = requests.post(API_URL, json=inputs)
+                # Handle API response
                 if response.status_code == 200:
                     result = response.json()
                     st.session_state["predicted_grade"] = result["predicted_score"]
                     st.session_state["inputs"] = inputs
+                    # Upsert data into Supabase
                     data_to_insert["stud_score"] = result["predicted_score"]
+                    # Upsert the data
                     supabase.table("student_features").upsert(data_to_insert,on_conflict="stud_uuid").execute()
                     st.switch_page("pages/prediction_page_app.py")
                 else:
