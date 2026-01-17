@@ -20,12 +20,6 @@ cd StudentPerformacne
 pip install -r requirements.txt
 ```
 
-```bash
-cd API
-pip install -r requirements.txt
-```
-
-
 3-Start the Flask API Server (Backend):
 
 ```bash
@@ -36,7 +30,7 @@ python app.py
 4-Start the Streamlit App (Frontend):
 
 ```bash
-streamlit run student_performance_app.py
+streamlit run app.py
 ```
 
 
