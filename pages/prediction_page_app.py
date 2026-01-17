@@ -3,6 +3,7 @@ import streamlit as st
 from components.grade_prediction_card import render_grade_prediction_card
 from components.recommendations_card import render_recommendations_card
 from components.footer import render_footer as render_exact_footer_from_image
+from components.logout import render_logout_button
 # Load Bootstrap and Custom CSS
 def load_bootstrap():
     with open("styles/bootstrap.html", "r") as f:
@@ -16,6 +17,7 @@ def load_css():
 def render_prediction_page():
     load_css()
     load_bootstrap()
+    
     # Ensure that prediction exists
     if "predicted_grade" not in st.session_state:
        st.warning("Please predict your grade first")
@@ -25,7 +27,7 @@ def render_prediction_page():
     inputs = st.session_state.get("inputs", {})
     # Render Recommendations Card
     render_recommendations_card(inputs)
-    
+    render_logout_button()
     render_exact_footer_from_image()
 if __name__ == "__main__":
     st.set_page_config(

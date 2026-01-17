@@ -7,6 +7,7 @@ from supabase import create_client, Client
 from components.header import render_header
 from components.input_form import render_input_form
 from components.footer import render_footer
+from components.logout import render_logout_button
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 API_URL = "http://127.0.0.1:5000/predict"
@@ -48,6 +49,7 @@ def render_student_performance():
 
     load_bootstrap()
     load_css()
+    render_logout_button()
     # Render Header component
     render_header()
      

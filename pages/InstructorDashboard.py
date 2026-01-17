@@ -5,6 +5,7 @@ from components.charts import render_grade_distribution
 from components.tablesOfStudents import render_students_table
 from components.footer import render_footer
 from supabase import create_client, Client
+from components.logout import render_logout_button
 
 # set page config
 st.set_page_config(page_title="Instructor Dashboard", layout="wide")
@@ -117,4 +118,5 @@ render_grade_distribution(df)
     
 
 
+render_logout_button()
 render_footer()
